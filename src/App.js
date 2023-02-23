@@ -9,7 +9,8 @@ function App() {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const optionClicked = (option) => {
-    const updatedOptions = [...selectedOptions, option];
+    const updatedOptions = [...selectedOptions];
+    updatedOptions[currentQuestion] = option;
     setSelectedOptions(updatedOptions);
 
     if (option.isCorrect) {
@@ -17,9 +18,7 @@ function App() {
     }
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
-    } else {
-      setFinalResults(false);
-    }
+    } 
   };
 
   const submitClicked = () => {
